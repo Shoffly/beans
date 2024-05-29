@@ -70,15 +70,16 @@ if uploaded_file is not None:
     df = pd.read_excel(uploaded_file)
     st.write(df)
 
-    if login():
-        st.success('Logged in successfully')
-        for index, row in df.iterrows():
-            custid = row['userid']
-            ncoins = row['beans']
-            status_code, response_text = addbeans(custid, ncoins)
-            if status_code == 200:
-                st.success(f"Beans added successfully to {custid}.")
-            else:
-                st.error(f"Error adding beans to {custid}: {status_code} - {response_text}")
-    else:
-        st.error('Login failed')
+    if st.button('Add Beans'):
+        if login():
+            st.success('Logged in successfully')
+            for index, row in df.iterrows():
+                custid = row['userid']
+                ncoins = row['beans']
+                status_code, response_text = addbeans(custid, ncoins)
+                if status_code == 200:
+                    st.success(f"Beans added successfully to {custid}.")
+                else:
+                    st.error(f"Error adding beans to {custid}: {status_code} - {response_text}")
+        else:
+            st.error('Login failed')
