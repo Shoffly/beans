@@ -60,7 +60,7 @@ buffer = BytesIO()
 with pd.ExcelWriter(buffer, engine='xlsxwriter') as writer:
     template_df.to_excel(writer, index=False)
 buffer.seek(0)
-st.download_button(label="Download Template", data=buffer, file_name='template.xlsx', mime='application/vnd.ms-excel')
+st.download_button(label="Download Template", data=buffer, file_name='template.xlsx', mime='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet')
 
 # Upload Excel file
 st.header('Upload Excel File')
