@@ -2,3 +2,4 @@ streamlit
 pandas
 openpyxl
 requests
+XlsxWriter==3.2.0
